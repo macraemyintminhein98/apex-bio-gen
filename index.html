@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioBoost AI - Generate Your Twitter Bio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+        <h1 class="text-3xl font-bold text-center mb-6 text-gray-800">BioBoost AI</h1>
+        <p class="text-center text-gray-600 mb-8">Craft your perfect Twitter bio with AI.</p>
+        
+        <form id="bioForm" class="space-y-4">
+            <div>
+                <label for="keywords" class="block text-sm font-medium text-gray-700">Keywords (e.g., 'marketing', 'tech', 'travel')</label>
+                <input type="text" id="keywords" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Enter keywords, comma-separated">
+            </div>
+            <div>
+                <label for="tone" class="block text-sm font-medium text-gray-700">Tone</label>
+                <select id="tone" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    <option value="professional">Professional</option>
+                    <option value="witty">Witty</option>
+                    <option value="casual">Casual</option>
+                    <option value="inspirational">Inspirational</option>
+                </select>
+            </div>
+            <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                Generate Bio
+            </button>
+        </form>
+
+        <div id="result" class="mt-8 p-4 bg-gray-100 rounded-md hidden">
+            <h2 class="text-xl font-semibold mb-2 text-gray-800">Your New Bio:</h2>
+            <p id="generatedBio" class="text-gray-700 break-words"></p>
+            <button class="mt-4 w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">Copy Bio</button>
+        </div>
+
+        <div class="mt-6 text-center text-sm text-gray-500">
+            Powered by AI. &copy; 2023 BioBoost AI.
+        </div>
+    </div>
+    <script>
+        document.getElementById('bioForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const keywords = document.getElementById('keywords').value;
+            const tone = document.getElementById('tone').value;
+            const generatedBioElement = document.getElementById('generatedBio');
+            const resultDiv = document.getElementById('result');
+
+            // This is a placeholder for actual AI API call
+            generatedBioElement.textContent = `[AI generating a ${tone} bio about ${keywords}...]`;
+            resultDiv.classList.remove('hidden');
+
+            // In a real app, this would be an AJAX call to your backend/AI API
+            // For demo: Simulate AI response
+            setTimeout(() => {
+                generatedBioElement.textContent = `Passionate about ${keywords.split(',')[0].trim()} | Building & innovating in tech | Always learning and sharing insights | ${tone} vibes only!`;
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
