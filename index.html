@@ -3,63 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BioBoost AI - Generate Your Twitter Bio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>BioBoost AI - Instagram Bio Generator</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='-.1em' x='-.05em' font-size='110' fill='%236B46C1'%3E✨%3C/text%3E%3C/svg%3E">
     <style>
-        body { font-family: sans-serif; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+        body { font-family: 'Inter', sans-serif; margin: 0; padding: 20px; background-color: #f8fafc; color: #333; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; }
+        .container { background-color: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); max-width: 600px; width: 100%; text-align: center; }
+        h1 { color: #6B46C1; margin-bottom: 15px; font-size: 2.2em; }
+        p { color: #666; margin-bottom: 25px; line-height: 1.6; }
+        textarea, select, button { width: calc(100% - 20px); padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #ddd; font-size: 1em; }
+        textarea { resize: vertical; min-height: 100px; }
+        button { background-color: #6B46C1; color: white; border: none; cursor: pointer; font-weight: 600; transition: background-color 0.3s ease; }
+        button:hover { background-color: #553C9A; }
+        #output { background-color: #e2e8f0; padding: 15px; border-radius: 8px; text-align: left; white-space: pre-wrap; word-wrap: break-word; color: #4a5568; margin-top: 20px; border: 1px dashed #a0aec0; }
+        .price { font-size: 1.5em; font-weight: 600; color: #6B46C1; margin-top: 20px; }
     </style>
 </head>
-<body class="bg-gray-50 flex items-center justify-center min-h-screen p-4">
-    <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
-        <h1 class="text-3xl font-bold text-center mb-6 text-gray-800">BioBoost AI</h1>
-        <p class="text-center text-gray-600 mb-8">Craft your perfect Twitter bio with AI.</p>
-        
-        <form id="bioForm" class="space-y-4">
-            <div>
-                <label for="keywords" class="block text-sm font-medium text-gray-700">Keywords (e.g., 'marketing', 'tech', 'travel')</label>
-                <input type="text" id="keywords" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Enter keywords, comma-separated">
-            </div>
-            <div>
-                <label for="tone" class="block text-sm font-medium text-gray-700">Tone</label>
-                <select id="tone" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
-                    <option value="professional">Professional</option>
-                    <option value="witty">Witty</option>
-                    <option value="casual">Casual</option>
-                    <option value="inspirational">Inspirational</option>
-                </select>
-            </div>
-            <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                Generate Bio
-            </button>
+<body>
+    <div class="container">
+        <h1>✨ BioBoost AI ✨</h1>
+        <p>Craft the perfect Instagram bio with AI. Just tell us about yourself, and we'll generate compelling options!</p>
+        <form id="bioForm">
+            <textarea id="interests" placeholder="E.g., Travel, Photography, Tech, Coffee Lover, Entrepreneur, Dog Mom..."></textarea>
+            <select id="tone">
+                <option value="friendly">Friendly & Approachable</option>
+                <option value="professional">Professional & Polished</option>
+                <option value="witty">Witty & Humorous</option>
+                <option value="creative">Creative & Unique</option>
+                <option value="adventurous">Adventurous & Bold</option>
+            </select>
+            <button type="submit">Generate My Bio ($9.99)</button>
         </form>
-
-        <div id="result" class="mt-8 p-4 bg-gray-100 rounded-md hidden">
-            <h2 class="text-xl font-semibold mb-2 text-gray-800">Your New Bio:</h2>
-            <p id="generatedBio" class="text-gray-700 break-words"></p>
-            <button class="mt-4 w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">Copy Bio</button>
-        </div>
-
-        <div class="mt-6 text-center text-sm text-gray-500">
-            Powered by AI. &copy; 2023 BioBoost AI.
-        </div>
+        <div id="output">Your new bio will appear here! Copy and paste with ease.</div>
+        <p class="price">One-time purchase: $9.99</p>
     </div>
     <script>
-        document.getElementById('bioForm').addEventListener('submit', function(e) {
+        document.getElementById('bioForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-            const keywords = document.getElementById('keywords').value;
+            const interests = document.getElementById('interests').value;
             const tone = document.getElementById('tone').value;
-            const generatedBioElement = document.getElementById('generatedBio');
-            const resultDiv = document.getElementById('result');
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = 'Generating your bio...';
 
-            // This is a placeholder for actual AI API call
-            generatedBioElement.textContent = `[AI generating a ${tone} bio about ${keywords}...]`;
-            resultDiv.classList.remove('hidden');
+            // Placeholder for AI generation and Stripe checkout integration
+            // In a real app, this would hit an API endpoint
+            // For demonstration, we'll simulate a response.
+            await new Promise(resolve => setTimeout(resolve, 2000)); 
+            const simulatedBio = `✨ Your AI-powered bio ✨
 
-            // In a real app, this would be an AJAX call to your backend/AI API
-            // For demo: Simulate AI response
-            setTimeout(() => {
-                generatedBioElement.textContent = `Passionate about ${keywords.split(',')[0].trim()} | Building & innovating in tech | Always learning and sharing insights | ${tone} vibes only!`;
-            }, 1500);
+            Based on your interests in ${interests.toLowerCase()} and a ${tone} tone, here are some options:
+
+            1. Exploring the world 🌎, one photo at a time. Tech enthusiast & always fueled by coffee. Let's connect!
+
+            2. Crafting digital dreams & making paw-sitive memories. 🐾 Building a life I love, with a dash of adventure.
+
+            3. Just a human trying to be a rainbow in someone else's cloud. ☁️ Coffee in hand, ideas in mind.
+
+            Choose your favorite and shine!`;
+            
+            outputDiv.innerHTML = simulatedBio;
+            alert('This is a demo. In a real application, you would proceed to a secure payment checkout for $9.99 before seeing the generated bios.');
         });
     </script>
 </body>
