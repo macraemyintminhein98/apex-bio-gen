@@ -1,1 +1,34 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Apex BioGen</title><style>body{font-family:sans-serif;margin:2em;text-align:center;background:#0d1117;color:#c9d1d9}h1{color:#58a6ff}.container{max-width:600px;margin:2em auto;padding:2em;background:#161b22;border-radius:8px;box-shadow:0 0 10px rgba(0,0,0,.5)}.input-group input,.input-group button{padding:10px;margin-top:10px;border-radius:5px;border:none}.input-group input{width:calc(100% - 22px);background:#0d1117;color:#c9d1d9;border:1px solid #30363d}.input-group button{background:#238636;color:white;cursor:pointer}.input-group button:hover{background:#2ea043}.output-box{background:#0d1117;padding:15px;margin-top:20px;border-radius:5px;border:1px solid #30363d;min-height:50px;text-align:left;white-space:pre-wrap}.price-tag{font-size:1.2em;font-weight:bold;margin-top:1.5em;color:#da3633}</style></head><body><div class="container"><h1>Apex BioGen</h1><p>Craft your perfect Instagram bio instantly!</p><div class="input-group"><input type="text" id="keywords" placeholder="Keywords (e.g., foodie, traveler, entrepreneur)"><button onclick="generateBio()">Generate Bio</button></div><div class="output-box" id="bioOutput">Your generated bio will appear here.</div><p class="price-tag">One-time purchase: $9.99</p><p>Unlock unlimited bio generations and advanced options with our Pro version!</p></div><script>function generateBio(){const keywords=document.getElementById('keywords').value;const output=document.getElementById('bioOutput');if(keywords.trim()===''){output.textContent="Please enter some keywords!";}else{output.textContent=`Generating a bio for '${keywords}'... (API integration coming soon!)`;}}</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioGen AI - Smart Instagram Bios</title>
+    <meta name="description" content="Generate creative and engaging Instagram bios with AI.">
+    <style>
+        body { font-family: sans-serif; margin: 0; padding: 20px; background-color: #f4f7f6; color: #333; }
+        .container { max-width: 700px; margin: 40px auto; background-color: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        h1 { color: #5c677d; text-align: center; margin-bottom: 25px; }
+        p { text-align: center; margin-bottom: 30px; line-height: 1.6; color: #666; }
+        .cta-button { display: block; width: fit-content; margin: 0 auto; padding: 15px 30px; background-color: #6a1b9a; color: white; text-decoration: none; border-radius: 25px; font-weight: bold; font-size: 1.1em; transition: background-color 0.3s ease; }
+        .cta-button:hover { background-color: #7b1fa2; }
+        .price { text-align: center; font-size: 1.8em; font-weight: bold; color: #4CAF50; margin-top: 25px; }
+        .benefits { list-style: none; padding: 0; margin-top: 30px; text-align: center; }
+        .benefits li { margin-bottom: 10px; color: #555; background: #e8f5e9; padding: 10px; border-radius: 5px; display: inline-block; margin: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BioGen AI: Your Instagram Bio, Reimagined.</h1>
+        <p>Unlock your online presence with a perfectly crafted Instagram bio. BioGen AI uses advanced intelligence to generate creative, engaging, and unique bios tailored to your style and goals.</p>
+        <div class="price">Only $9.99</div>
+        <a href="#" class="cta-button" onclick="alert('Payment integration coming soon! Stay tuned.');">Get Your Custom Bio Now!</a>
+        <ul class="benefits">
+            <li>✨ Stand Out</li>
+            <li>🚀 Boost Engagement</li>
+            <li>✍️ Effortless Creativity</li>
+            <li>🎯 Perfectly Persona-Matched</li>
+        </ul>
+    </div>
+</body>
+</html>
