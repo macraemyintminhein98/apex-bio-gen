@@ -3,32 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BioGen AI - Smart Instagram Bios</title>
-    <meta name="description" content="Generate creative and engaging Instagram bios with AI.">
+    <title>BioGen AI</title>
+    <meta name="description" content="Generate creative Twitter bios instantly with AI.">
     <style>
-        body { font-family: sans-serif; margin: 0; padding: 20px; background-color: #f4f7f6; color: #333; }
-        .container { max-width: 700px; margin: 40px auto; background-color: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        h1 { color: #5c677d; text-align: center; margin-bottom: 25px; }
-        p { text-align: center; margin-bottom: 30px; line-height: 1.6; color: #666; }
-        .cta-button { display: block; width: fit-content; margin: 0 auto; padding: 15px 30px; background-color: #6a1b9a; color: white; text-decoration: none; border-radius: 25px; font-weight: bold; font-size: 1.1em; transition: background-color 0.3s ease; }
-        .cta-button:hover { background-color: #7b1fa2; }
-        .price { text-align: center; font-size: 1.8em; font-weight: bold; color: #4CAF50; margin-top: 25px; }
-        .benefits { list-style: none; padding: 0; margin-top: 30px; text-align: center; }
-        .benefits li { margin-bottom: 10px; color: #555; background: #e8f5e9; padding: 10px; border-radius: 5px; display: inline-block; margin: 5px; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; background-color: #f7f9fc; color: #333; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        .container { background-color: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-width: 600px; width: 100%; text-align: center; }
+        h1 { color: #1da1f2; margin-bottom: 20px; font-size: 2em; }
+        p { margin-bottom: 25px; line-height: 1.6; }
+        textarea { width: calc(100% - 20px); padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; font-size: 1em; resize: vertical; min-height: 80px; }
+        button { background-color: #1da1f2; color: white; padding: 12px 25px; border: none; border-radius: 5px; cursor: pointer; font-size: 1.1em; transition: background-color 0.3s ease; }
+        button:hover { background-color: #0c85d0; }
+        #output { background-color: #e8f5fd; border: 1px solid #bee3f8; padding: 15px; border-radius: 5px; margin-top: 25px; text-align: left; min-height: 50px; display: none; word-wrap: break-word; }
+        #price-display { margin-top: 20px; font-weight: bold; font-size: 1.1em; color: #555; }
+        .footer { margin-top: 40px; font-size: 0.9em; color: #888; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>BioGen AI: Your Instagram Bio, Reimagined.</h1>
-        <p>Unlock your online presence with a perfectly crafted Instagram bio. BioGen AI uses advanced intelligence to generate creative, engaging, and unique bios tailored to your style and goals.</p>
-        <div class="price">Only $9.99</div>
-        <a href="#" class="cta-button" onclick="alert('Payment integration coming soon! Stay tuned.');">Get Your Custom Bio Now!</a>
-        <ul class="benefits">
-            <li>✨ Stand Out</li>
-            <li>🚀 Boost Engagement</li>
-            <li>✍️ Effortless Creativity</li>
-            <li>🎯 Perfectly Persona-Matched</li>
-        </ul>
+        <h1>BioGen AI</h1>
+        <p>Unlock your Twitter potential! Generate engaging bios in seconds with AI. Just tell us your keywords.</p>
+        <textarea id="keywords" placeholder="E.g., Tech Enthusiast, Coffee Lover, Software Engineer"></textarea>
+        <button onclick="generateBio()">Generate Bio</button>
+        <div id="price-display">Cost per generation: $9.99</div>
+        <div id="output"></div>
     </div>
+    <div class="footer">
+        Powered by APEX
+    </div>
+
+    <script>
+        async function generateBio() {
+            const keywords = document.getElementById('keywords').value;
+            const outputDiv = document.getElementById('output');
+            outputDiv.style.display = 'block';
+            outputDiv.innerHTML = 'Generating your bio...';
+
+            if (!keywords) {
+                outputDiv.innerHTML = 'Please enter some keywords to generate a bio.';
+                return;
+            }
+
+            // In a real app, this would call your Vercel API endpoint
+            // For this MVP, we'll simulate a response.
+            // Replace with actual API call and Stripe integration.
+            try {
+                // const response = await fetch('/api/generate-bio', {
+                //     method: 'POST',
+                //     headers: { 'Content-Type': 'application/json' },
+                //     body: JSON.stringify({ keywords: keywords })
+                // });
+                // const data = await response.json();
+                // if (data.success && data.bio) {
+                //     outputDiv.innerHTML = `<strong>Your New Bio:</strong> ${data.bio}`;
+                // } else {
+                //     outputDiv.innerHTML = `Error: ${data.message || 'Could not generate bio.'}`;
+                // }
+                setTimeout(() => {
+                    const mockBios = [
+                        `🚀 Building the future, one line of code at a time. Coffee-fueled software wizard. #Tech #DevLife`,
+                        `💡 Innovator & creator. Sharing insights on product design and AI. Let's connect! #Productivity #AI`,
+                        `☕ Entrepreneur | Passionate about sustainable tech. Always learning, always growing. #Startup #Future`
+                    ];
+                    const generatedBio = mockBios[Math.floor(Math.random() * mockBios.length)];
+                    outputDiv.innerHTML = `<strong>Your New Bio:</strong> ${generatedBio}`;
+                }, 2000); // Simulate API call delay
+
+            } catch (error) {
+                outputDiv.innerHTML = 'An unexpected error occurred. Please try again.';
+                console.error('Error:', error);
+            }
+        }
+    </script>
 </body>
 </html>
